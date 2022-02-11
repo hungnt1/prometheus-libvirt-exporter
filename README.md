@@ -7,15 +7,9 @@ By default, this exporter listens on TCP port 9000,Path '/metrics',to expose met
 # Building and running
 
 
-## build docker
 ```
-docker build -t libvirt-exporter:1.2 -f Dockerfile  .
-
-```
-
-## run with docker
-```
-docker run --network host -dit --name libvirt-exporter libvirt-exporter:1.2 ./libvirt_exporter --libvirt.uri qemu+tcp://compute02:16509/system
+go mod vendor
+go build prometheus-libvirt-exporter.go
 ```
 
 ## To see all available configuration flags:
