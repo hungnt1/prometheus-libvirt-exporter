@@ -6,26 +6,17 @@ By default, this exporter listens on TCP port 9000,Path '/metrics',to expose met
 [![codecov](https://codecov.io/gh/zhangjianweibj/prometheus-libvirt-exporter/branch/master/graph/badge.svg)](https://codecov.io/gh/zhangjianweibj/prometheus-libvirt-exporter)
 # Building and running
 
-## Requirements
-1. Gorelease: `go install github.com/goreleaser/goreleaser`
 
-2. Taskfile: `go install github.com/go-task/task/v3/cmd/task@latest`
+## build docker
+```
+docker build -t libvirt-exporter:1.2 -f Dockerfile  .
 
-## use go dep(depressed)
-1. install go dep
+```
 
-2. cp $GOPATH/bin/dep /usr/bin/
-
-3. dep ensure
-
-4. go build prometheus-libvirt-exporter.go
-
-5. ./prometheus-libvirt-exporter
-
-## Building
-1. Run `task build`
-
-2. Afterwards all packages, binaries and archives are available in the `dist/` folder
+## run with docker
+```
+docker run --network host -dit --name libvirt-exporter libvirt-exporter:1.2 ./libvirt_exporter --libvirt.uri qemu+tcp://compute02:16509/system
+```
 
 ## To see all available configuration flags:
 
